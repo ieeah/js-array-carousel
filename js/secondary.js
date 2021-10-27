@@ -45,9 +45,10 @@ const imagesBody = document.querySelector('.images');
 const thumbsBody = document.querySelector('.thumbs');
 const imagesElements = document.getElementsByClassName('images-container');
 const thumbsElements = document.getElementsByClassName('thumb');
-const prev = document.querySelector('.prev');
+const imageAlreadyActive = document.querySelector('.images-container.active');
+const thumbAlreadyActive = document.querySelector('.thumb.active');
 const next = document.querySelector('.next');
-
+const prev = document.querySelector('.prev');
 
 for (let i = 0; i < textCollection.length; i++) {
     imagesBody.innerHTML +=
@@ -73,16 +74,35 @@ let activeImage = 0;
 
 imagesElements[activeImage].classList.add('active');
 thumbsElements[activeImage].classList.add('active');
-console.log('activeimage', activeImage);
 
 prev.addEventListener('click', function() {
 
     activeImage--;
 
-    if (activeImage < 5) {
-        activeImage = imagesCollection.length - 1;
+    if (activeImage < 0) {
+        activeImage = imageCollection.length - 1;
     }
 
-    console.log('activeimage', activeImage);
+    imageAlreadyActive.classList.remove('active');
+    imagesElements[activeImage].classList.add('active');
+
+    thumbAlreadyActive.classList.remove('active');
+    thumbsElements[activeImage].classList.add('active');
 });
 
+next.addEventListener('click', function () {
+
+    activeImage++;
+
+    if (activeImage === imageCollection.length ) {
+        activeImage = 0;
+    } 
+
+    // image
+    document.querySelector('.images-container.active').classList.remove('active');
+    document.getElementsByClassName('images-container')[activeImage].classList.add('active');
+
+    //thumbs
+    document.querySelector('.thumb.active').classList.remove('active');
+    document.getElementsByClassName('thumb')[activeImage].classList.add('active');
+});

@@ -108,13 +108,13 @@ if (activeImage < 0 ) {
     activeImage = imageCollection.length - 1;
 }
 
-    // // image
-    // document.querySelector('.images-container.active').classList.remove('active');
-    // document.getElementsByClassName('images-container')[activeImage].classList.add('active');
+    // image
+    document.querySelector('.images-container.active').classList.remove('active');
+    document.getElementsByClassName('images-container')[activeImage].classList.add('active');
 
-    // //thumbs
-    // document.querySelector('.thumb.active').classList.remove('active');
-    // document.getElementsByClassName('thumb')[activeImage].classList.add('active');
+    //thumbs
+    document.querySelector('.thumb.active').classList.remove('active');
+    document.getElementsByClassName('thumb')[activeImage].classList.add('active');
 
     console.log('activeImage', activeImage)
 });
